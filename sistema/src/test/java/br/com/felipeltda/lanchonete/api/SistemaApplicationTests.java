@@ -1,4 +1,4 @@
-package br.com.felipeltda.lanchonete.sistema;
+package br.com.felipeltda.lanchonete.api;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

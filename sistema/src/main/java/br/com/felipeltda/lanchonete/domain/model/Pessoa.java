@@ -1,4 +1,4 @@
-package br.com.felipeltda.lanchonete.sistema.modelos;
+package br.com.felipeltda.lanchonete.domain.model;
 
 import lombok.*;
 import javax.persistence.*;

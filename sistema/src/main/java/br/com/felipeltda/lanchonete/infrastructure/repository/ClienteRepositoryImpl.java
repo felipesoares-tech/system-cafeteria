@@ -1,6 +1,7 @@
-package br.com.felipeltda.lanchonete.sistema.modelos;
+package br.com.felipeltda.lanchonete.infrastructure.repository;
 
-import lombok.Data;
+import br.com.felipeltda.lanchonete.domain.model.Cliente;
+import br.com.felipeltda.lanchonete.domain.repository.ClienteRepository;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -8,7 +9,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Component
-public class ClienteRepositoryImpl implements ClienteRepository{
+public class ClienteRepositoryImpl implements ClienteRepository {
     @PersistenceContext
     private EntityManager manager;
     @Override

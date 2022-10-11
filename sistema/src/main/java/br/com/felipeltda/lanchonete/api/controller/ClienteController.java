@@ -1,5 +1,7 @@
-package br.com.felipeltda.lanchonete.sistema.modelos;
+package br.com.felipeltda.lanchonete.api.controller;
 
+import br.com.felipeltda.lanchonete.domain.model.Cliente;
+import br.com.felipeltda.lanchonete.domain.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

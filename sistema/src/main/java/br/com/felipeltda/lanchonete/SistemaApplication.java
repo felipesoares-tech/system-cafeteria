@@ -1,4 +1,4 @@
-package br.com.felipeltda.lanchonete.sistema;
+package br.com.felipeltda.lanchonete;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

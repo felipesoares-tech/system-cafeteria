@@ -1,11 +1,11 @@
-package br.com.felipeltda.lanchonete.sistema.modelos;
+package br.com.felipeltda.lanchonete.domain.model;
 import lombok.Data;
 
 import javax.persistence.*;
 
 @Data
 @Entity //indica que a classe que vai virar uma tabela
-public class Cliente extends Pessoa{
+public class Cliente extends Pessoa {
     @Id //indica que o atributo é chave da tabela
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 // indica que a chave será gerada incrementalmente
