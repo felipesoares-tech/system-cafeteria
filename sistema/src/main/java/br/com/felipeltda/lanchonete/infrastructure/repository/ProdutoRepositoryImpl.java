@@ -21,7 +21,6 @@ public class ProdutoRepositoryImpl implements ProdutoRepository {
     public Produto buscar(Long id) {
         return manager.find(Produto.class, id);
     }
-
     @Override
     @Transactional
     public Produto salvar(Produto produto) {

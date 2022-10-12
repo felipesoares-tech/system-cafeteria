@@ -7,5 +7,6 @@ public interface ClienteRepository {
     List<Cliente> listar();
     Cliente buscar(Long id);
     Cliente salvar(Cliente cliente);
+    Cliente cadastrar();
     void remover(Cliente cliente);
 }

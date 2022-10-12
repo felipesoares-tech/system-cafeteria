@@ -16,6 +16,12 @@ public class ClienteRepositoryImpl implements ClienteRepository {
     public List<Cliente> listar() {
         return manager.createQuery("from Cliente", Cliente.class).getResultList();
     }
+
+    @Override
+    public Cliente cadastrar() {
+        return manager.createQuery("from Cliente",Cliente.class).getSingleResult();
+    }
+
     @Override
     public Cliente buscar(Long id) {
         return manager.find(Cliente.class, id);
