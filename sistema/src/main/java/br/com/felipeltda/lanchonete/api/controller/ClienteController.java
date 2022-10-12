@@ -12,8 +12,14 @@ import java.util.List;
 public class ClienteController {
     @Autowired
     private ClienteRepository clienteRepository;
+    @CrossOrigin
     @GetMapping
     public List<Cliente> listar(){
         return clienteRepository.listar();
+    }
+
+    @GetMapping("/{clienteId}")
+    public Cliente buscar(@PathVariable Long clienteId){
+        return clienteRepository.buscar(clienteId);
     }
 }

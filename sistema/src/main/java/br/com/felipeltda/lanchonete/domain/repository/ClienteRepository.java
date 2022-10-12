@@ -1,5 +1,4 @@
 package br.com.felipeltda.lanchonete.domain.repository;
-
 import br.com.felipeltda.lanchonete.domain.model.Cliente;
 
 import java.util.List;

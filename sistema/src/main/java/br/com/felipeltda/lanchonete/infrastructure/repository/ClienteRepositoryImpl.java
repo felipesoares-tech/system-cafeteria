@@ -14,8 +14,7 @@ public class ClienteRepositoryImpl implements ClienteRepository {
     private EntityManager manager;
     @Override
     public List<Cliente> listar() {
-        return manager.createQuery("from Cliente",
-                Cliente.class).getResultList();
+        return manager.createQuery("from Cliente", Cliente.class).getResultList();
     }
     @Override
     public Cliente buscar(Long id) {
