@@ -2,10 +2,8 @@ package br.com.felipeltda.lanchonete.api.controller;
 import br.com.felipeltda.lanchonete.domain.model.Produto;
 import br.com.felipeltda.lanchonete.domain.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,6 +16,13 @@ import java.util.List;
         @GetMapping
         public List<Produto> listar() {
             return produtoRepository.listar();
+        }
+
+        @CrossOrigin
+        @PostMapping
+        @ResponseStatus(HttpStatus.CREATED)
+        public Produto adicionar (@RequestBody Produto produto){
+            return produtoRepository.salvar(produto);
         }
 
 }
