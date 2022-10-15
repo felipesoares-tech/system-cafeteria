@@ -1,4 +1,5 @@
 package br.com.felipeltda.lanchonete.api.controller;
+import br.com.felipeltda.lanchonete.domain.model.Cliente;
 import br.com.felipeltda.lanchonete.domain.model.Produto;
 import br.com.felipeltda.lanchonete.domain.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,12 @@ import java.util.List;
         @GetMapping
         public List<Produto> listar() {
             return produtoRepository.listar();
+        }
+
+        @CrossOrigin
+        @GetMapping("/{produtoId}")
+        public Produto buscar(@PathVariable Long produtoId){
+            return produtoRepository.buscar(produtoId);
         }
 
         @CrossOrigin
