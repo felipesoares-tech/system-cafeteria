@@ -16,19 +16,19 @@ public class EstadoController {
 
     @CrossOrigin
     @GetMapping
-    public List<Estado> listar() {
-        return estadoRepository.listar();
+    public List<Estado> findAll() {
+        return estadoRepository.findAll();
     }
 
     @GetMapping("/{estadoId}")
-    public Estado buscar(@PathVariable Integer estadoId) {
-        return estadoRepository.buscar(estadoId);
+    public Estado findById(@PathVariable Integer estadoId) {
+        return estadoRepository.findById(estadoId);
     }
 
     @CrossOrigin
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Estado adicionar(@RequestBody Estado estado) {
-        return estadoRepository.salvar(estado);
+    public Estado save(@RequestBody Estado estado) {
+        return estadoRepository.save(estado);
     }
 }

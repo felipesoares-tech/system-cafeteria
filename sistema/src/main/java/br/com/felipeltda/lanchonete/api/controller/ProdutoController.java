@@ -15,21 +15,21 @@ import java.util.List;
         private ProdutoRepository produtoRepository;
         @CrossOrigin
         @GetMapping
-        public List<Produto> listar() {
-            return produtoRepository.listar();
+        public List<Produto> findAll() {
+            return produtoRepository.findAll();
         }
 
         @CrossOrigin
         @GetMapping("/{produtoId}")
-        public Produto buscar(@PathVariable Long produtoId){
-            return produtoRepository.buscar(produtoId);
+        public Produto findById(@PathVariable Long produtoId){
+            return produtoRepository.findById(produtoId);
         }
 
         @CrossOrigin
         @PostMapping
         @ResponseStatus(HttpStatus.CREATED)
-        public Produto adicionar (@RequestBody Produto produto){
-            return produtoRepository.salvar(produto);
+        public Produto save (@RequestBody Produto produto){
+            return produtoRepository.save(produto);
         }
 
 }

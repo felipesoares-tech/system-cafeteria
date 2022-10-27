@@ -14,20 +14,20 @@ public class AtendenteController {
     private AtendenteRepository atendenteRepository;
     @CrossOrigin
     @GetMapping
-    public List<Atendente> listar(){
-        return atendenteRepository.listar();
+    public List<Atendente> findAll(){
+        return atendenteRepository.findAll();
     }
 
     @GetMapping("/{atendenteId}")
-    public Atendente buscar(@PathVariable Long atendenteId){
-        return atendenteRepository.buscar(atendenteId);
+    public Atendente findById(@PathVariable Long atendenteId){
+        return atendenteRepository.findById(atendenteId);
     }
 
     @CrossOrigin
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Atendente adicionar (@RequestBody Atendente atendente){
-        return atendenteRepository.salvar(atendente);
+    public Atendente save (@RequestBody Atendente atendente){
+        return atendenteRepository.save(atendente);
     }
 }
 

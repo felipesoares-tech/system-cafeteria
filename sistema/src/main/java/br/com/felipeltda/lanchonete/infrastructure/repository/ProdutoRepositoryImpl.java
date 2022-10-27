@@ -14,24 +14,24 @@ public class ProdutoRepositoryImpl implements ProdutoRepository {
     @PersistenceContext
     private EntityManager manager;
     @Override
-    public List<Produto> listar() {
+    public List<Produto> findAll() {
         return manager.createQuery("from Produto", Produto.class).getResultList();
     }
     @Override
-    public Produto buscar(Long id) {
+    public Produto findById(Long id) {
         return manager.find(Produto.class, id);
     }
     @Override
     @Transactional
-    public Produto salvar(Produto produto) {
+    public Produto save(Produto produto) {
         System.out.println("produto: "+produto.getId());
         return manager.merge(produto);
     }
     @Override
     @Transactional
-    public void remover(Produto produto) {
+    public void deleteById(Produto produto) {
         System.out.println("produto: "+produto.getId());
-        produto = buscar(produto.getId());
+        produto = findById(produto.getId());
         manager.remove(produto);
     }
 }

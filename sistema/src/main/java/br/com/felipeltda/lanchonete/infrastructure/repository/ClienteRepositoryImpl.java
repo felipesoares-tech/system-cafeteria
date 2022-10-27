@@ -13,31 +13,26 @@ public class ClienteRepositoryImpl implements ClienteRepository {
     @PersistenceContext
     private EntityManager manager;
     @Override
-    public List<Cliente> listar() {
+    public List<Cliente> findAll() {
         return manager.createQuery("from Cliente", Cliente.class).getResultList();
     }
 
     @Override
-    public Cliente cadastrar() {
-        return manager.createQuery("from Cliente",Cliente.class).getSingleResult();
-    }
-
-    @Override
-    public Cliente buscar(Long id) {
+    public Cliente findById(Long id) {
         return manager.find(Cliente.class, id);
     }
 
     @Override
     @Transactional
-    public Cliente salvar(Cliente cliente) {
+    public Cliente save(Cliente cliente) {
         System.out.println("cliente: "+cliente.getId());
         return manager.merge(cliente);
     }
     @Override
     @Transactional
-    public void remover(Cliente cliente) {
+    public void deleteById(Cliente cliente) {
         System.out.println("cliente: "+cliente.getId());
-        cliente = buscar(cliente.getId());
+        cliente = findById(cliente.getId());
         manager.remove(cliente);
     }
 }

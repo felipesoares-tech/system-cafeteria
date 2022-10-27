@@ -15,20 +15,20 @@ public class ClienteController {
     private ClienteRepository clienteRepository;
     @CrossOrigin
     @GetMapping
-    public List<Cliente> listar(){
-        return clienteRepository.listar();
+    public List<Cliente> findAll(){
+        return clienteRepository.findAll();
     }
 
     @GetMapping("/{clienteId}")
-    public Cliente buscar(@PathVariable Long clienteId){
-        return clienteRepository.buscar(clienteId);
+    public Cliente findById(@PathVariable Long clienteId){
+        return clienteRepository.findById(clienteId);
     }
 
     @CrossOrigin
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Cliente adicionar (@RequestBody Cliente cliente){
-        return clienteRepository.salvar(cliente);
+    public Cliente save (@RequestBody Cliente cliente){
+        return clienteRepository.save(cliente);
     }
 }
 
