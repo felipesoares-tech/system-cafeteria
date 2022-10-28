@@ -1,0 +1,9 @@
+insert into estado (nome) values ("MG");
+insert into estado (nome) values ("MG");
+insert into estado (nome) values ("MG");
+insert into estado (nome) values ("MG");
+insert into estado (nome) values ("MG");
+insert into estado (nome) values ("MG");
+insert into estado (nome) values ("MG");
+insert into estado (nome) values ("MG");
+insert into estado (nome) values ("MG");
