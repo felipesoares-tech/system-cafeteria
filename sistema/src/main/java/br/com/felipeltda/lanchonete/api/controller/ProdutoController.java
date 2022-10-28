@@ -22,7 +22,7 @@ import java.util.List;
         @CrossOrigin
         @GetMapping("/{produtoId}")
         public Produto findById(@PathVariable Long produtoId){
-            return produtoRepository.findById(produtoId);
+            return produtoRepository.findById(produtoId).orElseThrow(() -> new RuntimeException("PRODUTO NÃO ENCONTRADO!"));
         }
 
         @CrossOrigin

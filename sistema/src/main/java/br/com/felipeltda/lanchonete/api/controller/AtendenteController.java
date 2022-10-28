@@ -20,7 +20,7 @@ public class AtendenteController {
 
     @GetMapping("/{atendenteId}")
     public Atendente findById(@PathVariable Long atendenteId){
-        return atendenteRepository.findById(atendenteId);
+        return atendenteRepository.findById(atendenteId).orElseThrow(() -> new RuntimeException("ATENDENTE NÃO ENCONTRADO!"));
     }
 
     @CrossOrigin

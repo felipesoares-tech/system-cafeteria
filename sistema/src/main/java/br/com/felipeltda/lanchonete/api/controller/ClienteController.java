@@ -21,7 +21,7 @@ public class ClienteController {
 
     @GetMapping("/{clienteId}")
     public Cliente findById(@PathVariable Long clienteId){
-        return clienteRepository.findById(clienteId);
+        return clienteRepository.findById(clienteId).orElseThrow(() -> new RuntimeException("CPF NÃO ENCONTRADO!"));
     }
 
     @CrossOrigin

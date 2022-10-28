@@ -1,10 +1,9 @@
 package br.com.felipeltda.lanchonete.domain.repository;
 import br.com.felipeltda.lanchonete.domain.model.Cidade;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 import java.util.List;
 
-public interface CidadeRepository {
-    List<Cidade> findAll();
-    Cidade findById(Long id);
-    Cidade save(Cidade cliente);
-    void deleteById(Cidade cliente);
+public interface CidadeRepository extends JpaRepository<Cidade, Long> {
+
 }

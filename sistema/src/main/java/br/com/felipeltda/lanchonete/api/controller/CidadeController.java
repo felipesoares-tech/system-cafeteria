@@ -20,7 +20,7 @@ public class CidadeController {
 
     @GetMapping("/{cidadeId}")
     public Cidade findById(@PathVariable Long cidadeId){
-        return cidadeRepository.findById(cidadeId);
+        return cidadeRepository.findById(cidadeId).orElseThrow(() -> new RuntimeException("CIDADE NÃO ENCONTRADO!"));
     }
 
     @CrossOrigin

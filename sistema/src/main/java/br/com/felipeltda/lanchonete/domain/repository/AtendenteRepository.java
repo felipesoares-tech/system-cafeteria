@@ -1,10 +1,8 @@
 package br.com.felipeltda.lanchonete.domain.repository;
 import br.com.felipeltda.lanchonete.domain.model.Atendente;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 import java.util.List;
 
-public interface AtendenteRepository {
-    List<Atendente> findAll();
-    Atendente findById(Long id);
-    Atendente save(Atendente atendente);
-    void deleteById(Atendente atendente);
+public interface AtendenteRepository extends JpaRepository<Atendente, Long > {
 }

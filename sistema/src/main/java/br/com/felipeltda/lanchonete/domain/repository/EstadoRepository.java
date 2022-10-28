@@ -1,11 +1,9 @@
 package br.com.felipeltda.lanchonete.domain.repository;
 import br.com.felipeltda.lanchonete.domain.model.Estado;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface EstadoRepository {
-    List<Estado> findAll();
-    Estado findById(Integer id);
-    Estado save(Estado estado);
-    void deleteById(Estado estado);
+public interface EstadoRepository extends JpaRepository<Estado, Integer> {
+
 }
