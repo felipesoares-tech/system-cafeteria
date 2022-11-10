@@ -7,6 +7,7 @@ import java.time.LocalDate;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @MappedSuperclass
 public abstract class Pessoa {
+    @Id
     @Column(length = 11)
     protected String cpf;
     @Column(length = 50, nullable = false)

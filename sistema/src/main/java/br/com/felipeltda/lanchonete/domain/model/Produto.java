@@ -15,6 +15,7 @@ public class Produto {
     private Double valorUnitario;
     private Integer quantidade;
     @Column(length = 50, nullable = false)
+    @EqualsAndHashCode.Include
     private String nome;
 
 }
