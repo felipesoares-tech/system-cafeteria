@@ -33,13 +33,8 @@ public class ClienteController {
 
     @CrossOrigin
     @PostMapping
-    public ResponseEntity<Object> save (@RequestBody Cliente cliente){
-        try{
-            clienteService.cadastrarCliente(cliente);
-            return ResponseEntity.status(HttpStatus.CREATED).body(cliente);
-        }catch (EntidadeDuplicadaException e){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("CPF INFORMADO JÁ CONSTA NO BANCO DE DADOS!");
-        }
+    public Cliente save (@RequestBody Cliente cliente){
+        return clienteService.cadastrarCliente(cliente);
     }
 }
 

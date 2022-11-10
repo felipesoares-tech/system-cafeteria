@@ -1,6 +1,7 @@
 package br.com.felipeltda.lanchonete.api.controller;
 
 import br.com.felipeltda.lanchonete.domain.exception.EntidadeDuplicadaException;
+import br.com.felipeltda.lanchonete.domain.exception.EntidadeNaoEncontradaException;
 import br.com.felipeltda.lanchonete.domain.model.Atendente;
 import br.com.felipeltda.lanchonete.domain.repository.AtendenteRepository;
 import br.com.felipeltda.lanchonete.domain.service.AtendenteService;
@@ -27,20 +28,13 @@ public class AtendenteController {
 
     @GetMapping("/{atendenteId}")
     public Atendente findById(@PathVariable String atendenteId){
-        return atendenteRepository.findById(atendenteId).orElseThrow(() -> new RuntimeException("ATENDENTE NÃO ENCONTRADO!"));
+        return atendenteRepository.findById(atendenteId).orElseThrow(() -> new EntidadeNaoEncontradaException("ATENDENTE NÃO ENCONTRADO!"));
     }
 
     @CrossOrigin
     @PostMapping
-    public ResponseEntity<Object> save (@RequestBody Atendente atendente){
-        try {
-            atendenteService.cadastrarAtendente(atendente);
-            return ResponseEntity.status(HttpStatus.CREATED).body(atendente);
-        }catch (EntidadeDuplicadaException e){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("CPF INFORMADO JÁ CONSTA NO BANCO DE DADOS!");
-        }
-
-
+    public Atendente save (@RequestBody Atendente atendente){
+        return  atendenteService.cadastrarAtendente(atendente);
     }
 }
 

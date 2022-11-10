@@ -12,12 +12,11 @@ public class AtendenteService {
     @Autowired
     AtendenteRepository atendenteRepository;
 
-    public void cadastrarAtendente(Atendente atendente){
+    public Atendente cadastrarAtendente(Atendente atendente){
         if(atendenteRepository.existsById(atendente.getCpf())){
             throw new EntidadeDuplicadaException("ENTIDADE JÁ CADASTRADA!");
         }
-
-        atendenteRepository.save(atendente);
+        return atendenteRepository.save(atendente);
     }
 
 }

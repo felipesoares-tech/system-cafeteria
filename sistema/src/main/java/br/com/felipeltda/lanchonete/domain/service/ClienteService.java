@@ -12,12 +12,12 @@ public class ClienteService {
     @Autowired
     ClienteRepository clienteRepository;
 
-    public void cadastrarCliente(Cliente cliente){
+    public Cliente cadastrarCliente(Cliente cliente){
         if(clienteRepository.existsById(cliente.getCpf())){
             throw new EntidadeDuplicadaException("ENTIDADE JÁ CADASTRADA");
         }
 
-        clienteRepository.save(cliente);
+        return clienteRepository.save(cliente);
     }
 
 
