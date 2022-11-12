@@ -1,5 +1,4 @@
 package br.com.felipeltda.lanchonete.domain.service;
-
 import br.com.felipeltda.lanchonete.domain.exception.EntidadeDuplicadaException;
 import br.com.felipeltda.lanchonete.domain.model.Produto;
 import br.com.felipeltda.lanchonete.domain.repository.ProdutoRepository;
@@ -12,12 +11,11 @@ public class ProdutoService {
     @Autowired
     ProdutoRepository produtoRepository;
 
-    public void cadastrarProduto(Produto produto){
+    public Produto cadastrarProduto(Produto produto){
         if(produtoRepository.findAll().contains(produto)){
-            throw new EntidadeDuplicadaException("ENTIDADE JÁ CADASTRADA");
+            throw new EntidadeDuplicadaException("PRODUTO INFORMADO JÁ ESTÁ CADASTRADO NO SISTEMA!");
         }
-
-        produtoRepository.save(produto);
+        return produtoRepository.save(produto);
     }
 
 }

@@ -14,7 +14,7 @@ public class AtendenteService {
 
     public Atendente cadastrarAtendente(Atendente atendente){
         if(atendenteRepository.existsById(atendente.getCpf())){
-            throw new EntidadeDuplicadaException("ENTIDADE JÁ CADASTRADA!");
+            throw new EntidadeDuplicadaException("ATENDENTE INFORMADO JÁ ESTÁ CADASTRADO NO SISTEMA!");
         }
         return atendenteRepository.save(atendente);
     }

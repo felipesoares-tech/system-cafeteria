@@ -33,6 +33,7 @@ public class ClienteController {
 
     @CrossOrigin
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public Cliente save (@RequestBody Cliente cliente){
         return clienteService.cadastrarCliente(cliente);
     }

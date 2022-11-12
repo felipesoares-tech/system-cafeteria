@@ -33,6 +33,7 @@ public class AtendenteController {
 
     @CrossOrigin
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public Atendente save (@RequestBody Atendente atendente){
         return  atendenteService.cadastrarAtendente(atendente);
     }
