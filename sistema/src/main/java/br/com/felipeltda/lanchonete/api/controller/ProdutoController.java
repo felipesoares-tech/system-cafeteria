@@ -36,4 +36,10 @@ import java.util.List;
                 return productService.cadastrarProduto(product);
         }
 
+        @DeleteMapping("/{produtoId}")
+        @ResponseStatus(HttpStatus.NO_CONTENT)
+        public void remover(@PathVariable Long produtoId) {
+            productService.removeProduct(produtoId);
+        }
+
 }

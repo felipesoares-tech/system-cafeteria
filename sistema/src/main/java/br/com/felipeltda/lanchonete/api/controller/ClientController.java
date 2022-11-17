@@ -34,5 +34,11 @@ public class ClientController {
     public Client save (@RequestBody Client client){
         return clientService.cadastrarCliente(client);
     }
+
+    @DeleteMapping("/{clientId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void remover(@PathVariable String clientId) {
+        clientService.removeClient(clientId);
+    }
 }
 

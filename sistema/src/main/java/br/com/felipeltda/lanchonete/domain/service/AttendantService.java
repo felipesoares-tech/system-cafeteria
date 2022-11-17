@@ -30,7 +30,7 @@ public class AttendantService {
             throw new EntityNotFoundException(attendantId);
 
         } catch (DataIntegrityViolationException e) {
-            throw new LinkedEntityException("CLIENTE EM USO");
+            throw new LinkedEntityException("ATENDENTE EM USO");
         }
     }
 
