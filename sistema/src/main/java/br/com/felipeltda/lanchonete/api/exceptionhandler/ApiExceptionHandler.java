@@ -20,7 +20,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(EntidadeDuplicadaException.class)
     public ResponseEntity<?> tratarEntidadeDuplicada(EntidadeDuplicadaException e, WebRequest request){
-        return handleExceptionInternal(e, e.getMessage(), new HttpHeaders(), HttpStatus.CONFLICT,request);
+        return handleExceptionInternal(e, e.getMessage(), new HttpHeaders(), HttpStatus.UNAUTHORIZED,request);
     }
 
     @ExceptionHandler(EntidadeNaoEncontradaException.class)
