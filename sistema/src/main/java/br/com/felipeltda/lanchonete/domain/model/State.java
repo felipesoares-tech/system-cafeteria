@@ -1,21 +1,17 @@
 package br.com.felipeltda.lanchonete.domain.model;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 
-@Entity
 @Data
+@Entity
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Cidade {
-    @Column(nullable = false)
-    private String nome;
-    @EqualsAndHashCode.Include
+public class State {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @ManyToOne
-    @JoinColumn(nullable = false)
-    private Estado estado;
+    private Integer id;
+    @Column(length = 2)
+    @EqualsAndHashCode.Include
+    private String nome;
 }

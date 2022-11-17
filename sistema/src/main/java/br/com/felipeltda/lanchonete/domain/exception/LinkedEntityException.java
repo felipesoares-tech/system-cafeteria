@@ -1,7 +1,7 @@
 package br.com.felipeltda.lanchonete.domain.exception;
-public class EntidadeVinculadaException extends RuntimeException{
+public class LinkedEntityException extends RuntimeException{
     private static final long serialVersionUID = 1L;
-    public EntidadeVinculadaException(String mensagem){
+    public LinkedEntityException(String mensagem){
         super(mensagem);
     }
 }

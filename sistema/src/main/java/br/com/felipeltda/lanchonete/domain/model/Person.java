@@ -6,9 +6,10 @@ import java.time.LocalDate;
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @MappedSuperclass
-public abstract class Pessoa {
+public abstract class Person {
     @Id
     @Column(length = 11)
+    @EqualsAndHashCode.Include
     protected String cpf;
     @Column(length = 50, nullable = false)
     protected String nome;

@@ -8,14 +8,14 @@ import javax.persistence.*;
 @Entity
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Produto {
+public class City {
+    @Column(nullable = false)
+    private String nome;
+    @EqualsAndHashCode.Include
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Double valorUnitario;
-    private Integer quantidade;
-    @Column(length = 50, nullable = false)
-    @EqualsAndHashCode.Include
-    private String nome;
-
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private State state;
 }
