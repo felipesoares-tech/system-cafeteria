@@ -18,9 +18,16 @@ public class CityController {
         return cityRepository.findAll();
     }
 
-    @GetMapping("/{cidadeId}")
-    public City findById(@PathVariable Long cidadeId){
-        return cityRepository.findById(cidadeId).orElseThrow(() -> new RuntimeException("CIDADE NÃO ENCONTRADO!"));
+//    @CrossOrigin
+//    @GetMapping("/{cidadeId}")
+//    public City findById(@PathVariable Long cidadeId){
+//        return cityRepository.findById(cidadeId).orElseThrow(() -> new RuntimeException("CIDADE NÃO ENCONTRADO!"));
+//    }
+
+    @CrossOrigin
+    @GetMapping("/{uf}")
+    public List<City> findByUf(@PathVariable Integer uf){
+        return cityRepository.findByUf(uf);
     }
 
     @CrossOrigin
