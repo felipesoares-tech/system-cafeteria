@@ -23,7 +23,6 @@ public class AttendantController {
     @Autowired
     private AttendantService attendantService;
 
-    @CrossOrigin
     @GetMapping
     public List<Attendant> findAll() {
         return attendantRepository.findAll();
@@ -34,7 +33,6 @@ public class AttendantController {
         return attendantRepository.findById(attendantId).orElseThrow(() -> new EntityNotFoundException("ATENDENTE NÃO ENCONTRADO!"));
     }
 
-    @CrossOrigin
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Attendant save(@RequestBody Attendant attendant) {

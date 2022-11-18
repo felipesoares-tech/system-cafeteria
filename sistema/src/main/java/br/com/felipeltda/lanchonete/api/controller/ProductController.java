@@ -20,19 +20,16 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @CrossOrigin
     @GetMapping
     public List<Product> findAll() {
         return productRepository.findAll();
     }
 
-    @CrossOrigin
     @GetMapping("/{productId}")
     public Product findById(@PathVariable Long productId){
         return productRepository.findById(productId).orElseThrow(() -> new RuntimeException("product not found!"));
     }
 
-    @CrossOrigin
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Product save (@RequestBody Product product){

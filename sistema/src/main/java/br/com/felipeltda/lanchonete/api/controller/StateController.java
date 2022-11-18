@@ -21,7 +21,6 @@ public class StateController {
     @Autowired
     private StateService stateService;
 
-    @CrossOrigin
     @GetMapping
     public List<State> findAll() {
         return stateRepository.findAll();
@@ -33,7 +32,6 @@ public class StateController {
 
     }
 
-    @CrossOrigin
     @PostMapping
     public ResponseEntity<Object> save(@RequestBody State state) {
         try{

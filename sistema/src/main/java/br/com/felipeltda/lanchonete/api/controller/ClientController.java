@@ -19,7 +19,6 @@ public class ClientController {
 
     @Autowired
     private ClientService clientService;
-    @CrossOrigin
     @GetMapping
     public List<Client> findAll(){
         return clientRepository.findAll();
@@ -30,7 +29,6 @@ public class ClientController {
         return clientRepository.findById(clientId).orElseThrow(() -> new RuntimeException("entity not found!"));
     }
 
-    @CrossOrigin
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Client save (@RequestBody Client client){
