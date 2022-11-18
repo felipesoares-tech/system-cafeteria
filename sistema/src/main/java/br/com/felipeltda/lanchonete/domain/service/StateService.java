@@ -15,7 +15,7 @@ public class StateService {
     @Autowired
     private StateRepository stateRepository;
 
-    public State salvar(State state){
+    public State saveState(State state){
         if(stateRepository.findAll().contains(state)){
             throw new DuplicateEntityException(
                     String.format("Já existe estado com o nome " + state.getNome())
@@ -24,7 +24,7 @@ public class StateService {
         return  stateRepository.save(state);
     }
 
-    public void remover(Integer estadoId){
+    public void removeState(Integer estadoId){
         try{
             stateRepository.deleteById(estadoId);
         }catch (EmptyResultDataAccessException e){

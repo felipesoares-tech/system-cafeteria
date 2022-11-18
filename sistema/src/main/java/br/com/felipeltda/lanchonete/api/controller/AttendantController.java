@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/atendentes")
+@RequestMapping("/attendant")
 public class AttendantController {
     @Autowired
     private AttendantRepository attendantRepository;
@@ -29,16 +29,16 @@ public class AttendantController {
         return attendantRepository.findAll();
     }
 
-    @GetMapping("/{atendenteId}")
-    public Attendant findById(@PathVariable String atendenteId) {
-        return attendantRepository.findById(atendenteId).orElseThrow(() -> new EntityNotFoundException("ATENDENTE NÃO ENCONTRADO!"));
+    @GetMapping("/{attendantId}")
+    public Attendant findById(@PathVariable String attendantId) {
+        return attendantRepository.findById(attendantId).orElseThrow(() -> new EntityNotFoundException("ATENDENTE NÃO ENCONTRADO!"));
     }
 
     @CrossOrigin
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Attendant save(@RequestBody Attendant attendant) {
-        return attendantService.cadastrarAtendente(attendant);
+        return attendantService.registerAttendant(attendant);
     }
 
     @DeleteMapping("/{attendantId}")
@@ -48,14 +48,14 @@ public class AttendantController {
     }
 
     @PutMapping("/{attendantId}")
-    public ResponseEntity<Object> atualizar(@PathVariable String attendantId, @RequestBody Attendant attendant) {
+    public ResponseEntity<Object> updateAttendant(@PathVariable String attendantId, @RequestBody Attendant attendant) {
         Optional<Attendant> currentAttendant = attendantRepository.findById(attendantId);
         if (currentAttendant.isPresent()) {
             BeanUtils.copyProperties(attendant, currentAttendant.get(), "cpf");
             Attendant saveAttendant = attendantRepository.save(currentAttendant.get());
             return ResponseEntity.status(HttpStatus.OK).body(saveAttendant);
         } else
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("TESTE");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("test");
     }
 }
 

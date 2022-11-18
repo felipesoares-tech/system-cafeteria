@@ -16,9 +16,9 @@ public class ClientService {
     @Autowired
     ClientRepository clientRepository;
 
-    public Client cadastrarCliente(Client client){
+    public Client registerCustomer(Client client){
         if(clientRepository.existsById(client.getCpf())){
-            throw new DuplicateEntityException("CLIENTE INFORMADO JÁ ESTÁ CADASTRADO NO SISTEMA!");
+            throw new DuplicateEntityException("this entity is already registered in the system !");
         }
 
         return clientRepository.save(client);

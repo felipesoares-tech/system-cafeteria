@@ -1,5 +1,4 @@
 package br.com.felipeltda.lanchonete.domain.service;
-
 import br.com.felipeltda.lanchonete.domain.exception.DuplicateEntityException;
 import br.com.felipeltda.lanchonete.domain.exception.EntityNotFoundException;
 import br.com.felipeltda.lanchonete.domain.exception.LinkedEntityException;
@@ -16,9 +15,9 @@ public class AttendantService {
     @Autowired
     AttendantRepository attendantRepository;
 
-    public Attendant cadastrarAtendente(Attendant attendant){
+    public Attendant registerAttendant(Attendant attendant){
         if(attendantRepository.existsById(attendant.getCpf())){
-            throw new DuplicateEntityException("ATENDENTE INFORMADO JÁ ESTÁ CADASTRADO NO SISTEMA!");
+            throw new DuplicateEntityException("this entity is already registered in the system !");
         }
         return attendantRepository.save(attendant);
     }
@@ -30,7 +29,7 @@ public class AttendantService {
             throw new EntityNotFoundException(attendantId);
 
         } catch (DataIntegrityViolationException e) {
-            throw new LinkedEntityException("ATENDENTE EM USO");
+            throw new LinkedEntityException("entity in use");
         }
     }
 

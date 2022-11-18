@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/cidades")
+@RequestMapping("/city")
 public class CityController {
     @Autowired
     private CityRepository cityRepository;
@@ -19,9 +19,9 @@ public class CityController {
     }
 
 //    @CrossOrigin
-//    @GetMapping("/{cidadeId}")
-//    public City findById(@PathVariable Long cidadeId){
-//        return cityRepository.findById(cidadeId).orElseThrow(() -> new RuntimeException("CIDADE NÃO ENCONTRADO!"));
+//    @GetMapping("/{cityId}")
+//    public City findById(@PathVariable Long cityId){
+//        return cityRepository.findById(cityId).orElseThrow(() -> new RuntimeException("city not found!"));
 //    }
 
     @CrossOrigin

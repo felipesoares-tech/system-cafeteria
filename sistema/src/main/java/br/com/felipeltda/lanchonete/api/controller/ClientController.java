@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/clientes")
+@RequestMapping("/client")
 public class ClientController {
     @Autowired
     private ClientRepository clientRepository;
@@ -25,16 +25,16 @@ public class ClientController {
         return clientRepository.findAll();
     }
 
-    @GetMapping("/{clienteId}")
-    public Client findById(@PathVariable String clienteId){
-        return clientRepository.findById(clienteId).orElseThrow(() -> new RuntimeException("CPF NÃO ENCONTRADO!"));
+    @GetMapping("/{clientId}")
+    public Client findById(@PathVariable String clientId){
+        return clientRepository.findById(clientId).orElseThrow(() -> new RuntimeException("entity not found!"));
     }
 
     @CrossOrigin
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Client save (@RequestBody Client client){
-        return clientService.cadastrarCliente(client);
+        return clientService.registerCustomer(client);
     }
 
     @DeleteMapping("/{clientId}")
@@ -44,14 +44,14 @@ public class ClientController {
     }
 
     @PutMapping("/{clientId}")
-    public ResponseEntity<Object> atualizar(@PathVariable String clientId, @RequestBody Client client) {
+    public ResponseEntity<Object> updateClient(@PathVariable String clientId, @RequestBody Client client) {
         Optional<Client> currentClient = clientRepository.findById(clientId);
         if (currentClient.isPresent()) {
             BeanUtils.copyProperties(client, currentClient.get(), "cpf");
             Client saveClient = clientRepository.save(currentClient.get());
             return ResponseEntity.status(HttpStatus.OK).body(saveClient);
         } else
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("TESTE");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("test");
     }
 }
 

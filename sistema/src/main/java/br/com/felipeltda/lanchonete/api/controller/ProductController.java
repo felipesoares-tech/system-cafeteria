@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/produtos")
+@RequestMapping("/product")
 public class ProductController {
     @Autowired
     private ProductRepository productRepository;
@@ -27,33 +27,33 @@ public class ProductController {
     }
 
     @CrossOrigin
-    @GetMapping("/{produtoId}")
-    public Product findById(@PathVariable Long produtoId){
-        return productRepository.findById(produtoId).orElseThrow(() -> new RuntimeException("PRODUTO NÃO ENCONTRADO!"));
+    @GetMapping("/{productId}")
+    public Product findById(@PathVariable Long productId){
+        return productRepository.findById(productId).orElseThrow(() -> new RuntimeException("product not found!"));
     }
 
     @CrossOrigin
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Product save (@RequestBody Product product){
-        return productService.cadastrarProduto(product);
+        return productService.registerProduct(product);
     }
 
-    @DeleteMapping("/{produtoId}")
+    @DeleteMapping("/{productId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void remover(@PathVariable Long produtoId) {
-        productService.removeProduct(produtoId);
+    public void removeProduct(@PathVariable Long productId) {
+        productService.removeProduct(productId);
     }
 
     @PutMapping("/{productId}")
-    public ResponseEntity<Object> atualizar(@PathVariable Long productId, @RequestBody Product product) {
+    public ResponseEntity<Object> updateProduct(@PathVariable Long productId, @RequestBody Product product) {
         Optional<Product> currentProduct = productRepository.findById(productId);
         if (currentProduct.isPresent()) {
             BeanUtils.copyProperties(product, currentProduct.get(), "id");
             Product saveProduct = productRepository.save(currentProduct.get());
             return ResponseEntity.status(HttpStatus.OK).body(saveProduct);
         } else
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("TESTE");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("test");
     }
 
 }

@@ -15,7 +15,7 @@ public class ProductService {
     @Autowired
     ProductRepository productRepository;
 
-    public Product cadastrarProduto(Product product){
+    public Product registerProduct(Product product){
         if(productRepository.findAll().contains(product)){
             throw new DuplicateEntityException("PRODUTO INFORMADO JÁ ESTÁ CADASTRADO NO SISTEMA!");
         }

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/estados")
+@RequestMapping("/state")
 public class StateController {
     @Autowired
     private StateRepository stateRepository;
@@ -27,9 +27,9 @@ public class StateController {
         return stateRepository.findAll();
     }
 
-    @GetMapping("/{estadoId}")
-    public State findById(@PathVariable Integer estadoId) {
-        return stateRepository.findById(estadoId).orElseThrow(() -> new RuntimeException("ESTADO NÃO ENCONTRADO!"));
+    @GetMapping("/{stateId}")
+    public State findById(@PathVariable Integer stateId) {
+        return stateRepository.findById(stateId).orElseThrow(() -> new RuntimeException("state not found !"));
 
     }
 
@@ -37,22 +37,22 @@ public class StateController {
     @PostMapping
     public ResponseEntity<Object> save(@RequestBody State state) {
         try{
-            stateService.salvar(state);
+            stateService.saveState(state);
             return ResponseEntity.status(HttpStatus.CREATED).body(state);
         }catch (DuplicateEntityException e){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("DEU RUIM");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("bad");
         }
     }
 
-    @DeleteMapping("/{estadoId}")
-    public ResponseEntity<Object> remover(@PathVariable Integer estadoId){
+    @DeleteMapping("/{stateId}")
+    public ResponseEntity<Object> removeState(@PathVariable Integer stateId){
         try {
-            stateService.remover(estadoId);
-            return ResponseEntity.status(HttpStatus.OK).body(String.format("Estado %d removido!",estadoId));
+            stateService.removeState(stateId);
+            return ResponseEntity.status(HttpStatus.OK).body(String.format("state %d removed!",stateId));
         }catch (EntityNotFoundException e){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("ESTADO NAO ENCONTRADO");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("state not found !");
         }catch (LinkedEntityException e){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Estado ja esta vinculado a uma cidade, nao foi possivel deletar");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("state is already linked to a city, it was not possible to delete");
         }
     }
 }
