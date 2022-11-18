@@ -7,15 +7,15 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class City {
-    @Column(nullable = false)
-    private String nome;
-    @EqualsAndHashCode.Include
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(length = 11)
     private Long id;
-    @ManyToOne
-    @JoinColumn(nullable = false)
-    private State state;
+    @Column(length = 120)
+    private String nome;
+    @Column(length = 2)
+    private Integer uf;
+    @Column(length = 7)
+    private Integer ibge;
+
 }

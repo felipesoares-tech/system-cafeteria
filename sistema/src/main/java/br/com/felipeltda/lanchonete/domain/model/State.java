@@ -6,12 +6,18 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class State {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(length = 11)
     private Integer id;
-    @Column(length = 2)
-    @EqualsAndHashCode.Include
+    @Column(length = 75)
     private String nome;
+    @Column(length = 2)
+    private String uf;
+    @Column(length = 2)
+    private Integer ibge;
+    @Column(length = 3)
+    private Integer pais;
+    @Column(length = 50)
+    private String ddd;
 }
