@@ -17,14 +17,14 @@ public class CityController {
         return cityRepository.findAll();
     }
 
-//
-//    @GetMapping("/{cityId}")
-//    public City findById(@PathVariable Long cityId){
-//        return cityRepository.findById(cityId).orElseThrow(() -> new RuntimeException("city not found!"));
-//    }
 
-    @GetMapping("/{uf}")
-    public List<City> findByUf(@PathVariable Integer uf){
+    @GetMapping("/{cityId}")
+    public City findById(@PathVariable Long cityId){
+        return cityRepository.findById(cityId).orElseThrow(() -> new RuntimeException("city not found!"));
+    }
+
+    @GetMapping("/by-uf")
+    public List<City> findByUf(Integer uf){
         return cityRepository.findByUf(uf);
     }
 
