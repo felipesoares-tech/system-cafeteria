@@ -1,5 +1,4 @@
 package br.com.felipeltda.lanchonete.domain.model;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

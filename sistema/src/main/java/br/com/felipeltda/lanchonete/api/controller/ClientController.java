@@ -2,13 +2,18 @@ package br.com.felipeltda.lanchonete.api.controller;
 import br.com.felipeltda.lanchonete.domain.model.Client;
 import br.com.felipeltda.lanchonete.domain.repository.ClientRepository;
 import br.com.felipeltda.lanchonete.domain.service.ClientService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.ReflectionUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.lang.reflect.Field;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -31,7 +36,7 @@ public class ClientController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Client save (@RequestBody Client client){
+    public Client save (@RequestBody @Valid Client client){
         return clientService.registerCustomer(client);
     }
 
@@ -51,5 +56,27 @@ public class ClientController {
         } else
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("test");
     }
+    private void merge(Map<String, Object> sourceData, Client targetClient) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        Client sourceClient = objectMapper.convertValue(sourceData, Client.class);
+
+        sourceData.forEach((nomePropriedade, valorPropriedade) -> {
+            Field field = ReflectionUtils.findField(Client.class, nomePropriedade);
+            field.setAccessible(true);
+
+            Object newValue = ReflectionUtils.getField(field, sourceClient);
+
+            ReflectionUtils.setField(field, targetClient, newValue);
+        });
+    }
+        @PatchMapping("/{clientId}")
+        public ResponseEntity<?> partialUpdate(@PathVariable String clientId, @RequestBody Map<String, Object> fields){
+            Optional<Client> currentClient = clientRepository.findById(clientId);
+            currentClient.ifPresent(client -> merge(fields, client));
+
+            return updateClient(clientId,currentClient.get());
+    }
+
+
 }
 
