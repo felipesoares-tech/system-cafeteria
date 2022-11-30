@@ -30,7 +30,7 @@ public class ClientController {
     }
 
     @GetMapping("/{clientId}")
-    public Client findById(@PathVariable String clientId){
+    public Client findById(@PathVariable Integer clientId){
         return clientRepository.findById(clientId).orElseThrow(() -> new RuntimeException("entity not found!"));
     }
 
@@ -42,12 +42,12 @@ public class ClientController {
 
     @DeleteMapping("/{clientId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void remover(@PathVariable String clientId) {
+    public void remover(@PathVariable Integer clientId) {
         clientService.removeClient(clientId);
     }
 
     @PutMapping("/{clientId}")
-    public ResponseEntity<Object> updateClient(@PathVariable String clientId, @RequestBody Client client) {
+    public ResponseEntity<Object> updateClient(@PathVariable Integer clientId, @RequestBody Client client) {
         Optional<Client> currentClient = clientRepository.findById(clientId);
         if (currentClient.isPresent()) {
             BeanUtils.copyProperties(client, currentClient.get(), "cpf");
@@ -70,7 +70,7 @@ public class ClientController {
         });
     }
         @PatchMapping("/{clientId}")
-        public ResponseEntity<?> partialUpdate(@PathVariable String clientId, @RequestBody Map<String, Object> fields){
+        public ResponseEntity<?> partialUpdate(@PathVariable Integer clientId, @RequestBody Map<String, Object> fields){
             Optional<Client> currentClient = clientRepository.findById(clientId);
             currentClient.ifPresent(client -> merge(fields, client));
 

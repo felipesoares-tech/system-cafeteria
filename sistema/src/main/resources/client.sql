@@ -1,0 +1,2 @@
+insert into client (cpf,data_nascimento,nome,telefone) values('03645877945','1990-07-25','Thamires Ribeiro','38998037716');
+insert into client (cpf,data_nascimento,nome,telefone) values('06889794578','1998-05-07','Carlos Roberto','38999443321');

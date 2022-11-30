@@ -8,7 +8,11 @@ import java.time.LocalDate;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @MappedSuperclass
 public abstract class Person {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotNull
+    private Integer id;
     @Column(length = 11)
     @EqualsAndHashCode.Include
     protected String cpf;

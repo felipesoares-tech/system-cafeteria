@@ -16,17 +16,17 @@ public class AttendantService {
     AttendantRepository attendantRepository;
 
     public Attendant registerAttendant(Attendant attendant){
-        if(attendantRepository.existsById(attendant.getCpf())){
+        if(attendantRepository.existsById(attendant.getId())){
             throw new DuplicateEntityException("this entity is already registered in the system !");
         }
         return attendantRepository.save(attendant);
     }
-    public void removeAttendant(String attendantId) {
+    public void removeAttendant(Integer attendantId) {
         try {
             attendantRepository.deleteById(attendantId);
 
         } catch (EmptyResultDataAccessException e) {
-            throw new EntityNotFoundException(attendantId);
+            throw new EntityNotFoundException("entity not found");
 
         } catch (DataIntegrityViolationException e) {
             throw new LinkedEntityException("entity in use");

@@ -35,7 +35,7 @@ public class AttendantController {
     }
 
     @GetMapping("/{attendantId}")
-    public Attendant findById(@PathVariable String attendantId) {
+    public Attendant findById(@PathVariable Integer attendantId) {
         return attendantRepository.findById(attendantId).orElseThrow(() -> new EntityNotFoundException("ATENDENTE NÃO ENCONTRADO!"));
     }
 
@@ -47,12 +47,12 @@ public class AttendantController {
 
     @DeleteMapping("/{attendantId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void remover(@PathVariable String attendantId) {
+    public void remover(@PathVariable Integer attendantId) {
         attendantService.removeAttendant(attendantId);
     }
 
     @PutMapping("/{attendantId}")
-    public ResponseEntity<Object> updateAttendant(@PathVariable String attendantId, @RequestBody Attendant attendant) {
+    public ResponseEntity<Object> updateAttendant(@PathVariable Integer attendantId, @RequestBody Attendant attendant) {
         Optional<Attendant> currentAttendant = attendantRepository.findById(attendantId);
         if (currentAttendant.isPresent()) {
             BeanUtils.copyProperties(attendant, currentAttendant.get(), "cpf");
@@ -77,7 +77,7 @@ public class AttendantController {
     }
 
     @PatchMapping("/{attendantId}")
-    public ResponseEntity<?> partialUpdate(@PathVariable String attendantId, @RequestBody Map<String, Object> fields){
+    public ResponseEntity<?> partialUpdate(@PathVariable Integer attendantId, @RequestBody Map<String, Object> fields){
         Optional<Attendant> currentAttendant = attendantRepository.findById(attendantId);
         currentAttendant.ifPresent(attendant -> merge(fields, attendant));
 

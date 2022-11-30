@@ -17,22 +17,22 @@ public class ClientService {
     ClientRepository clientRepository;
 
     public Client registerCustomer(Client client){
-        if(clientRepository.existsById(client.getCpf())){
+        if(clientRepository.existsById(client.getId())){
             throw new DuplicateEntityException("this entity is already registered in the system !");
         }
 
         return clientRepository.save(client);
     }
 
-    public void removeClient(String clientId) {
+    public void removeClient(Integer clientId) {
         try {
             clientRepository.deleteById(clientId);
 
         } catch (EmptyResultDataAccessException e) {
-            throw new EntityNotFoundException(clientId);
+            throw new EntityNotFoundException("entity not found!");
 
         } catch (DataIntegrityViolationException e) {
-            throw new LinkedEntityException("CLIENTE EM USO");
+            throw new LinkedEntityException("Linked Entity");
         }
     }
 
