@@ -17,9 +17,6 @@ public abstract class Person {
     protected String nome;
     @Column(length = 13)
     protected String telefone;
-    @Column(length = 40)
-    @Email
-    protected String email;
-    LocalDate dataNascimento;
+    protected LocalDate dataNascimento;
 
 }
