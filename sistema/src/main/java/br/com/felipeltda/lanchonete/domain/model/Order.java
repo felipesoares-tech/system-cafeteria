@@ -8,7 +8,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name="order_lan")
+@Table(name="orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,9 +17,9 @@ public class Order {
     @JoinColumn
     private Client client;
     @OneToOne
-    @JoinColumn
+    @JoinColumn(nullable = false)
     private Attendant attendant;
 
-    @OneToMany(mappedBy = "order")
-    private List<Item> itens = new ArrayList<>();
+//    @OneToMany(mappedBy = "order")
+//    private List<Item> itens = new ArrayList<>();
 }

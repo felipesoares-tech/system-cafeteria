@@ -12,10 +12,13 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Integer qtd;
-    @OneToOne
-    private Product product;
-    private Double vlrTotal;
+
     @ManyToOne
     @JoinColumn
+    private Product product;
+    private Double vlrTotal;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_order")
     private Order order;
 }
