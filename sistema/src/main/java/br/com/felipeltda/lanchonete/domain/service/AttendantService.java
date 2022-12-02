@@ -16,7 +16,7 @@ public class AttendantService {
     AttendantRepository attendantRepository;
 
     public Attendant registerAttendant(Attendant attendant){
-        if(attendantRepository.existsById(attendant.getId())){
+        if(attendantRepository.findAll().contains(attendant)){
             throw new DuplicateEntityException("this entity is already registered in the system !");
         }
         return attendantRepository.save(attendant);

@@ -17,7 +17,7 @@ public class ClientService {
     ClientRepository clientRepository;
 
     public Client registerCustomer(Client client){
-        if(clientRepository.existsById(client.getId())){
+        if(clientRepository.findAll().contains(client)){
             throw new DuplicateEntityException("this entity is already registered in the system !");
         }
 
