@@ -50,7 +50,7 @@ public class ClientController {
     public ResponseEntity<Object> updateClient(@PathVariable Integer clientId, @RequestBody Client client) {
         Optional<Client> currentClient = clientRepository.findById(clientId);
         if (currentClient.isPresent()) {
-            BeanUtils.copyProperties(client, currentClient.get(), "cpf");
+            BeanUtils.copyProperties(client, currentClient.get(), "id");
             Client saveClient = clientRepository.save(currentClient.get());
             return ResponseEntity.status(HttpStatus.OK).body(saveClient);
         } else
