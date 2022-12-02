@@ -18,7 +18,7 @@ public class Item {
     private Product product;
     private Double vlrTotal;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "fk_order")
     private Order order;
 }

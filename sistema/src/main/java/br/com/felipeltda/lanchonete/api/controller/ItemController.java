@@ -18,15 +18,20 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/item")
 public class ItemController {
-
     @Autowired
     private ItemRepository itemRepository;
-
     @GetMapping
     public List<Item> findAll(){
         return itemRepository.findAll();
     }
-
+    @GetMapping("/by-client-name")
+    public List<Item> findItemsByOrder_Client_Nome(String name){
+        return itemRepository.findItemsByOrder_Client_Nome(name);
+    }
+    @GetMapping("/by-attendant-name")
+    public List<Item> findItemsByOrder_Attendant_Nome(String name){
+        return  itemRepository.findItemsByOrder_Attendant_Nome(name);
+    }
     @GetMapping("/{itemId}")
     public Item findById(@PathVariable Integer itemId){
         return itemRepository.findById(itemId).orElseThrow(() -> new RuntimeException("entity not found!"));
