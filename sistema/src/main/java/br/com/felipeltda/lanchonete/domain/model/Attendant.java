@@ -20,6 +20,7 @@ public class Attendant extends Person {
     @Size(max = 40)
     private String email;
     @Column(length = 40)
+    @Size(max = 20)
     private String senha;
 
     @Override
