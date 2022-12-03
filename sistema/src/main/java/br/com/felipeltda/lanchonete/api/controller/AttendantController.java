@@ -44,6 +44,10 @@ public class AttendantController {
     public Attendant save(@RequestBody @Valid Attendant attendant) {
         return attendantService.registerAttendant(attendant);
     }
+    @GetMapping("/by-email")
+    public Attendant findByEmail(String email){
+        return  attendantRepository.findByEmail(email);
+    }
 
     @DeleteMapping("/{attendantId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

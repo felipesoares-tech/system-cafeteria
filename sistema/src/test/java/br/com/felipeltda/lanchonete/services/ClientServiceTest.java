@@ -24,7 +24,6 @@ public class ClientServiceTest {
         Client newClient = new Client();
         newClient.setNome("Felipe Soares");
         newClient.setCpf("02187354644");
-        newClient.setEmail("soares.felipe200@gmail.com");
         newClient.setTelefone("38998605529");
         newClient.setDataNascimento(LocalDate.parse("1999-05-26"));
         DuplicateEntityException expectedError =

@@ -1,7 +1,8 @@
 package br.com.felipeltda.lanchonete.domain.exception;
-public class DuplicateEntityException extends RuntimeException{
+
+public class InvalidCpfException extends RuntimeException{
     private static final long serialVersionUID = 1L;
-    public DuplicateEntityException(String mensagem){
+    public InvalidCpfException(String mensagem){
         super(mensagem);
     }
 }
