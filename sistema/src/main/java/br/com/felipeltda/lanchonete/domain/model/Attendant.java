@@ -5,6 +5,8 @@ import org.hibernate.Hibernate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 import java.util.Objects;
@@ -22,6 +24,10 @@ public class Attendant extends Person {
     @Column(length = 40)
     @Size(max = 20)
     private String senha;
+
+    @ManyToOne
+    @JoinColumn
+    private City cidade;
 
     @Override
     public boolean equals(Object o) {
