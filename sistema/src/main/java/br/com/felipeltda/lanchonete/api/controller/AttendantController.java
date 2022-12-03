@@ -59,7 +59,7 @@ public class AttendantController {
     public ResponseEntity<Object> updateAttendant(@PathVariable Integer attendantId, @RequestBody Attendant attendant) {
         Optional<Attendant> currentAttendant = attendantRepository.findById(attendantId);
         if (currentAttendant.isPresent()) {
-            BeanUtils.copyProperties(attendant, currentAttendant.get(), "cpf");
+            BeanUtils.copyProperties(attendant, currentAttendant.get(), "id");
             Attendant saveAttendant = attendantRepository.save(currentAttendant.get());
             return ResponseEntity.status(HttpStatus.OK).body(saveAttendant);
         } else
