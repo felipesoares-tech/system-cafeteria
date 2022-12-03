@@ -3,7 +3,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.InputMismatchException;
 
-@Component
 public class CpfValidator {
     public static boolean isCPF(String CPF) {
         if (CPF == null)

@@ -14,9 +14,6 @@ public class AttendantService {
     @Autowired
     AttendantRepository attendantRepository;
 
-    @Autowired
-    CpfValidator cpfValidator;
-
     public Attendant registerAttendant(Attendant attendant){
         if(attendantRepository.findAll().contains(attendant)){
             throw new DuplicateEntityException("this entity is already registered in the system !");

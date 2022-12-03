@@ -18,9 +18,6 @@ public class ClientService {
     @Autowired
     ClientRepository clientRepository;
 
-    @Autowired
-    private CpfValidator cpfValidator;
-
     public Client registerCustomer(Client client){
         if(clientRepository.findAll().contains(client)){
             throw new DuplicateEntityException("this entity is already registered in the system !");
