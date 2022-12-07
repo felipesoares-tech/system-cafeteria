@@ -1,2 +1,2 @@
-insert into attendant (cpf,data_nascimento,nome,telefone,email,senha) values('07697785692','1990-07-25','Thiago Fonseca','38999445533','thiago@gmail.com','123654');
-insert into attendant (cpf,data_nascimento,nome,telefone,email,senha) values('01304446697','1999-05-12','Carlos Roberto','38999110296','carlos@gmail.com','123456');
+insert into attendant (cpf,data_nascimento,nome,telefone,email,senha) values('02187354644','1990-05-26','Felipe Soares','38998605529','soares.felipe200@gmail.com','16f877a');
+insert into attendant (cpf,data_nascimento,nome,telefone,email,senha) values('01304446697','1999-05-12','Josimar Viana','38999110296','josimar@gmail.com','123456');
