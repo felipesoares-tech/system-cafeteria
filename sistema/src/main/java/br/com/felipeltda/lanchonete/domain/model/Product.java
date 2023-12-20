@@ -8,6 +8,7 @@ import javax.persistence.*;
 @Entity
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -7,6 +7,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,7 @@ public class ProductController {
 
     @Autowired
     private ProductService productService;
-
+    @PreAuthorize("hasRole('PRODUCT_SELECT')")
     @GetMapping
     public List<Product> findAll() {
         return productRepository.findAll();
@@ -33,19 +34,19 @@ public class ProductController {
     public Product findById(@PathVariable Long productId){
         return productRepository.findById(productId).orElseThrow(() -> new RuntimeException("product not found!"));
     }
-
+    @PreAuthorize("hasRole('PRODUCT_INSERT')")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Product save (@RequestBody Product product){
         return productService.registerProduct(product);
     }
-
+    @PreAuthorize("hasRole('PRODUCT_DELETE')")
     @DeleteMapping("/{productId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void removeProduct(@PathVariable Long productId) {
         productService.removeProduct(productId);
     }
-
+    @PreAuthorize("hasRole('PRODUCT_UPDATE')")
     @PutMapping("/{productId}")
     public ResponseEntity<Object> updateProduct(@PathVariable Long productId, @RequestBody Product product) {
         Optional<Product> currentProduct = productRepository.findById(productId);
